@@ -1,4 +1,4 @@
-# Práctica 01 ED: Haskell + Git + GitHub
+# Práctica 01: Haskell + Git + GitHub
 
 ## Objetivo de la práctica
 
