@@ -53,10 +53,7 @@ decide a b c =
    	esDescendiente 10 9 7 8 = False
 -}
 esDescendiente :: Int -> Int-> Int -> Int -> Bool
-esDescendiente x y z w =
-  if x > y && y > z && z > w
-  then True
-  else False
+esDescendiente x y z w = x > y && y > z && z > w
 
 
 {- Función: esDivisible
