@@ -15,7 +15,8 @@ mayorIgual (Cont n) (Cont m) = mayorIgual n m
 
 {- Función: aplana
    Desripción: Regresa una lista de todas las Matrioskas que
-   componen la Matrioska dada, empezando por la más externa hasta    la más interna
+   componen la Matrioska dada, empezando por la más externa hasta
+   la más interna
    Uso: aplana Mati = [Mati]
         aplana (Cont (Cont Mati)) = [Cont (Cont Mati), Cont Mati, Mati]
 -}

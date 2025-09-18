@@ -50,4 +50,4 @@ En la canción [El Pollito Pio](https://www.youtube.com/watch?v=dhsy6epaJGs) se 
 
 ## Tiempo requerido en realizar la Práctica completa
 
-La Práctica 3 me ha tomado un total de 4 horas en completar.
+La Práctica 4 me ha tomado un total de 4 horas en completar.
