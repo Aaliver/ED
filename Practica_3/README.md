@@ -1,4 +1,8 @@
-# Práctica 03: Tipos de datos y listas por comprensión
+# Práctica 03: Tipos de datos y Listas por comprensión
+
+## Objetivo de la Práctica
+
+El objetivo de la Práctica 3 ha sido conocer las Clases de tipo (TypeClass), crear nuestros propios tipos de datos y hacer uso de las Listas por compresión, así como conocer algunas palabra reservadas y funciones que seran de ayuda para todo lo anterior.
 
 ## Actividades de la Práctica
 
@@ -14,11 +18,7 @@
 
 - Lipovaca, M. (2011). Learn you A Haskell for great good: A beginner’s guide. No Starch Press.
 
-## Objetivo de la práctica
-
-El objetivo de la Práctica 3 ha sido conocer las Clases de tipo (TypeClass), crear nuestros propios tipos de datos y hacer uso de las Listas por compresión, así como conocer algunas palabra reservadas y funciones que seran de ayuda para todo lo anterior.
-
-## Tiempo requerido en realizar la práctica completa
+## Tiempo requerido en realizar la Práctica completa
 
 La Práctica 3 me ha tomado un total de 4 horas en completar.
 
