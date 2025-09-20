@@ -1,20 +1,19 @@
+data Semestre1 = Ingles | ED | Algebra | ICC | MCA deriving (Show)
+
 {- Función: creditos
    Descripción: Dependiendo de la entrada regresa una lista con
    las materias con esa cantidad de créditos de acuerdo al primer
    semestre de la carrera Ciencias de la Computación
-   Uso: creditos 12 = ["ICC","MCA I"]
-        creditos 10 = ["ED","Algebra Sup I"]
-        creditos 4 = ["Ingles I"]
+   Uso: creditos 12 = [ICC,MCA]
+        creditos 10 = [ED,Algebra]
+        creditos 4 = [Ingles]
 -}
-creditos :: Int -> [String]
-creditos n =
-  if n == 4
-  then ["Ingles I"]
-  else if n == 10
-       then ["ED","Algebra Sup I"]
-       else if n == 12
-            then ["ICC","MCA I"]
-            else []
+creditos :: Int -> [Semestre1]
+creditos n 
+  | n == 4    = [Ingles]
+  | n == 10   = [ED,Algebra]
+  | n == 12   = [ICC,MCA]
+  | otherwise = []
 
 
  {- Función: negativos
