@@ -1,7 +1,7 @@
 module Practica5 where
 
 import Data.Char (toUpper)
-import Aux (esPar, suma, multi, dividirPar)
+import Aux (esPar, suma, multi, divPar)
 
 {- Función: hollerBack
    Desripción: Devuelve la cadena dada en mayusculas
@@ -70,5 +70,5 @@ extranio :: Int -> [Int]
 extranio 1 = [1]
 extranio n =
   if (esPar n)
-  then n:(extranio (dividirPar n 2))
+  then n:(extranio (divPar n 2))
   else n:(extranio (suma 1 (multi n 3)))

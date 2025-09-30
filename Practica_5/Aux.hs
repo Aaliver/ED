@@ -19,17 +19,8 @@ suma :: Int -> Int -> Int
 suma 0 m = m
 suma n m =
   if n > 0
-  then suma (n - 1) (m + 1)
-  else suma (n + 1) (m - 1)
-
-
-{- Función: multi
-   Descripción: Regresa la multiplicación de dos números
-   Uso: multi 9 2 = 18
--}
-multi :: Int -> Int -> Int
-multi m 0 = 0
-multi n m = suma n (multi n (m - 1))
+  then suma (pred n) (succ m)
+  else suma (succ n) (pred m)
 
 
 {- Función: suma
@@ -43,18 +34,27 @@ resta :: Int -> Int -> Int
 resta n 0 = n
 resta n m =
   if m > 0
-  then resta (n - 1) (m - 1)
-  else resta (n + 1) (m + 1)
+  then resta (pred n) (pred m)
+  else resta (succ n) (succ m)
+
+
+{- Función: multi
+   Descripción: Regresa la multiplicación de dos números
+   Uso: multi 9 2 = 18
+-}
+multi :: Int -> Int -> Int
+multi m 0 = 0
+multi n m = suma n (multi n (resta m 1))
 
 
 {- Función: dividirPar
    Descripción: Regresa la división de dos números pares
    Uso: dividirPar 40 2 = 20
 -}
-dividirPar :: Int -> Int -> Int
-dividirPar n m 
+divPar :: Int -> Int -> Int
+divPar n m 
   | m == 0    = error "No se puede divir entre cero"
   | n == m    = 1
-  | otherwise = suma 1 (dividirPar (resta n m) m)
+  | otherwise = suma 1 (divPar (resta n m) m)
 
   
