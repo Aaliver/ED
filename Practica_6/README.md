@@ -8,7 +8,7 @@ El objetivo de la Práctica 5 ha sido crear árboles binarios recursivos mediant
 
 ### Sintaxis
 
-1. Construir árboles
+**1. Construir árboles**
 
 ``` mermaid
 graph TD
@@ -42,7 +42,7 @@ J-->N((Vacio))
 J-->O((s))
 ```
 
-2. Representación visual de árboles
+**2. Representación visual de árboles**
 
 - AB 4 (Vacio) (AB 3 Vacio Vacio)
 
