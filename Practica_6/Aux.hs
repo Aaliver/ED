@@ -47,6 +47,7 @@ posOrden (AB r t1 t2) = (posOrden t1) ++ (posOrden t2) ++ [r]
 Descripción: Regresa la altura de un árbol binario
    Uso: altura (AB 1 (AB 2 (AB 4 Vacio Vacio) (AB 8 Vacio Vacio)) (AB 9 Vacio Vacio)) = 3
 -}
+altura :: Arbol a -> Int
 altura Vacio = 0
 altura (AB r Vacio Vacio) = 1
 altura (AB r t1 t2) = 1 + max (altura t1) (altura t2)

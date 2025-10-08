@@ -56,5 +56,3 @@ divPar n m
   | m == 0    = error "No se puede divir entre cero"
   | n == m    = 1
   | otherwise = suma 1 (divPar (resta n m) m)
-
-  
