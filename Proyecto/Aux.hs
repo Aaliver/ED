@@ -8,11 +8,11 @@ data Arbol a = Vacio | AB a (Arbol a) (Arbol a) deriving (Eq, Ord, Show)
    Uso: frecuencia 'a' "entrada" = 2
 -}
 frecuencia :: Char -> String -> Int
-frecuencia c "" = 0
-frecuencia c (x:xs) =
-  if c == x
-  then 1 + frecuencia c xs
-  else frecuencia c xs 
+frecuencia e "" = 0
+frecuencia e (x:xs) =
+  if e == x
+  then 1 + frecuencia e xs
+  else frecuencia e xs
 
 
 {- Función: listaOrd
@@ -61,6 +61,7 @@ inserta e (AB r t1 t2) = AB r (inserta e t1) t2
    Uso: 
 -}
 bits :: Char -> Arbol Char -> String
+bits _ Vacio = error "No existe árbol para convertir a bits"
 bits e (AB r t1 t2) =
   if raiz t2 == e
   then "1"
@@ -81,6 +82,7 @@ raiz (AB r t1 t2) = r
    Uso: 
 -}
 letra :: String -> Arbol Char -> Char
+letra _ Vacio = error "No existe árbol para convertir a cadena"
 letra ('1':_) (AB r _ t2) = raiz t2
 letra (x:xs) (AB r t1 t2) = letra xs t1
 
@@ -90,6 +92,7 @@ letra (x:xs) (AB r t1 t2) = letra xs t1
    Uso: 
 -}
 elemento :: String -> String
+elemento "" = error "El elemento no es válido"
 elemento ('1':_) = "1"
 elemento (x:xs) = x:(elemento xs)
 
@@ -99,5 +102,6 @@ elemento (x:xs) = x:(elemento xs)
    Uso: 
 -}
 recorta :: String -> String
+recorta "" = ""
 recorta ('1':xs) = xs
 recorta (x:xs) = recorta xs

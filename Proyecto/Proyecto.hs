@@ -20,7 +20,7 @@ lista (x:xs) = (x, frecuencia x (x:xs)):(lista [y | y <- xs, y /= x])
 
 {- Función: arbol
    Descripción:
-   Uso: arbol (listaOrd (lista "olla")) = AB ' ' (AB '0' (AB '0' Vacio (AB 'a' Vacio Vacio)) (AB 'o' Vacio Vacio)) (AB 'l' Vacio Vacio)
+   Uso: arbol (lista "olla") = AB ' ' (AB '0' (AB '0' Vacio (AB 'a' Vacio Vacio)) (AB 'o' Vacio Vacio)) (AB 'l' Vacio Vacio)
 -}
 arbol :: [(Char, Int)] -> Arbol Char
 arbol [] = Vacio
