@@ -21,7 +21,7 @@ frecuencia c (x:xs) =
 -}
 listaOrd :: [(Char, Int)] -> [(Char, Int)]
 listaOrd [] = []
-listaOrd ((a, b):ys) = ordena (a, b) (listaOrd ys)
+listaOrd ((a, b):xs) = ordena (a, b) (listaOrd xs)
 
 
 {- Función: ordena
@@ -31,10 +31,10 @@ listaOrd ((a, b):ys) = ordena (a, b) (listaOrd ys)
 -}
 ordena :: (Char, Int) -> [(Char, Int)] -> [(Char, Int)]
 ordena (a, b) [] = [(a, b)]
-ordena (a, b) ((c, d):ys) =
+ordena (a, b) ((c, d):xs) =
   if b >= d
-  then (a, b):(c, d):ys
-  else (c, d):(ordena (a, b) ys)
+  then (a, b):(c, d):xs
+  else (c, d):(ordena (a, b) xs)
 
 
 {- Función: construye
@@ -43,7 +43,7 @@ ordena (a, b) ((c, d):ys) =
 -}
 construye :: Arbol Char -> [(Char, Int)] -> Arbol Char
 construye tree [] = tree
-construye tree ((a, b):ys) = construye (inserta a tree) (ys)
+construye tree ((a, b):xs) = construye (inserta a tree) xs
 
 
 {- Función: inserta
@@ -80,9 +80,9 @@ raiz (AB r t1 t2) = r
    Descripción:
    Uso: 
 -}
-letra :: String -> Arbol Char -> String
-letra ('1':_) (AB r _ t2) = [raiz t2]
-letra (z:zs) (AB r t1 t2) = letra zs t1
+letra :: String -> Arbol Char -> Char
+letra ('1':_) (AB r _ t2) = raiz t2
+letra (x:xs) (AB r t1 t2) = letra xs t1
 
 
 {- Función: elemento
@@ -91,7 +91,7 @@ letra (z:zs) (AB r t1 t2) = letra zs t1
 -}
 elemento :: String -> String
 elemento ('1':_) = "1"
-elemento (z:zs) = z:(elemento zs)
+elemento (x:xs) = x:(elemento xs)
 
 
 {- Función: recorta
@@ -99,6 +99,5 @@ elemento (z:zs) = z:(elemento zs)
    Uso: 
 -}
 recorta :: String -> String
-recorta ('1':zs) = zs
-recorta (z:zs) = recorta zs
-
+recorta ('1':xs) = xs
+recorta (x:xs) = recorta xs

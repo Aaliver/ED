@@ -3,9 +3,9 @@ module Proyecto where
 import Aux (Arbol(..), frecuencia, construye, listaOrd, bits, letra, elemento, recorta)
 
 {-
-let arbolito = arbol (listaOrd (lista ("AVRAHKADABRA")))
+let arbolito = arbol (lista "AVRAHKADABRA")
 let bits = encoding "AVRAHKADABRA" arbolito
-decoding bits arbolito
+decoding bits arbolito 
 -}
 
 {- Función: lista
@@ -24,7 +24,7 @@ lista (x:xs) = (x, frecuencia x (x:xs)):(lista [y | y <- xs, y /= x])
 -}
 arbol :: [(Char, Int)] -> Arbol Char
 arbol [] = Vacio
-arbol (y:ys) = construye (AB ' ' Vacio Vacio) (y:ys)
+arbol (x:xs) = construye (AB ' ' Vacio Vacio) (listaOrd (x:xs))
 
 
 {- Función: encoding
@@ -34,15 +34,14 @@ arbol (y:ys) = construye (AB ' ' Vacio Vacio) (y:ys)
 encoding :: String -> Arbol Char -> String
 encoding _ Vacio = error "No existe árbol para codificar"
 encoding "" _ = ""
-encoding (z:zs) tree = (bits z tree) ++ (encoding zs tree)
+encoding (x:xs) tree = (bits x tree) ++ (encoding xs tree)
 
 
 {- Función: decoding
    Descripción:
    Uso: 
 -}
-decoding :: String -> Arbol Char -> [Char]
+decoding :: String -> Arbol Char -> String
 decoding _ Vacio = error "No existe árbol para decodificar"
 decoding "" _ = ""
-decoding (z:zs) tree = (letra (elemento (z:zs)) tree) ++ (decoding (recorta (z:zs)) tree)
-
+decoding (x:xs) tree = (letra (elemento (x:xs)) tree):(decoding (recorta (x:xs)) tree)
