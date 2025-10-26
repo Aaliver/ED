@@ -16,7 +16,7 @@ creditos n
   | otherwise = []
 
 
- {- Función: negativos
+{- Función: negativos
    Descripción: Regresa la cantidad de números negativos de
    la lista dada
    Uso: negativos [-1,2,4,6,-4] = 2

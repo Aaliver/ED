@@ -44,7 +44,7 @@ posOrden (AB r t1 t2) = (posOrden t1) ++ (posOrden t2) ++ [r]
 
 
 {- Función: altura
-Descripción: Regresa la altura de un árbol binario
+   Descripción: Regresa la altura de un árbol binario
    Uso: altura (AB 1 (AB 2 (AB 4 Vacio Vacio) (AB 8 Vacio Vacio)) (AB 9 Vacio Vacio)) = 3
 -}
 altura :: Arbol a -> Int
@@ -66,9 +66,10 @@ inserta e (AB r t1 t2)
 
 
 {- Función: arbol
-   Descripción: Devuelve un árbol al que se le insertan nuevos elementos
-   Uso: arbol arbol (AB 7 (AB 5 Vacio Vacio) Vacio) [2,9] = AB 7 (AB 5 (AB 2 Vacio Vacio) Vacio) (AB 9 Vacio Vacio)
+   Descripción: Regresa un árbol al que se le insertan nuevos
+   elementos
+   Uso: arbol (AB 7 (AB 5 Vacio Vacio) Vacio) [2,9] = AB 7 (AB 5 (AB 2 Vacio Vacio) Vacio) (AB 9 Vacio Vacio)
 -}
 arbol :: Ord a => Arbol a -> [a] -> Arbol a
 arbol ab [] = ab
-arbol ab (y:ys) = arbol (inserta y ab) (ys)
+arbol ab (y:ys) = arbol (inserta y ab) ys
