@@ -49,11 +49,12 @@ construye tree ((a, b):xs) = construye (inserta a tree) xs
 
 
 {- Función: inserta
-Descripción: Inserta un alemento a un árbol en su rama derecha
+   Descripción: Inserta un alemento a un árbol en su rama
+   derecha
    Uso: inserta '7' Vacio = AB '0' (AB '0' Vacio Vacio) (AB '7' Vacio Vacio)
 -}
 inserta :: Char -> Arbol Char -> Arbol Char
-inserta e Vacio = AB '0' (AB '0' Vacio Vacio) (AB e Vacio Vacio)
+inserta e Vacio = AB ' ' (AB ' ' Vacio Vacio) (AB e Vacio Vacio)
 inserta e (AB r t1 Vacio) = AB r t1 (AB e Vacio Vacio)
 inserta e (AB r t1 t2) = AB r (inserta e t1) t2
 
@@ -67,7 +68,7 @@ bits _ Vacio = error "No existe árbol para convertir a bits"
 bits e (AB r t1 t2) =
   if raiz t2 == e
   then "1"
-  else (raiz t1):(bits e t1)
+  else '0':(bits e t1)
 
 
 {- Función: raiz
