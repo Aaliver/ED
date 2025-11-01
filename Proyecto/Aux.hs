@@ -2,6 +2,16 @@ module Aux where
 
 data Arbol a = Vacio | AB a (Arbol a) (Arbol a) deriving (Eq, Ord, Show)
 
+{- Función: lista
+   Descripción: Recibe una cadena de caracteres y regresa una
+   lista de tuplas que indica la frecuencia de cada letra
+   Uso: lista "olla" = [('o',1),('l',2),('a',1)]
+-}
+lista :: String -> [(Char, Int)]
+lista "" = []
+lista (x:xs) = (x, frecuencia x (x:xs)):(lista [y | y <- xs, y /= x])
+
+
 {- Función: frecuencia
    Descripción: Regresa la frecuencia con la que aparece un
    caracter en una cadena
@@ -85,7 +95,7 @@ raiz (AB r t1 t2) = r
    Uso: letra "001" (arbol (lista "olla")) = 'a'
 -}
 letra :: String -> Arbol Char -> Char
-letra _ Vacio = error "No existe árbol para convertir a cadena"
+letra _ Vacio = error "No existe el caracter"
 letra ('1':_) (AB r _ t2) = raiz t2
 letra (x:xs) (AB r t1 t2) = letra xs t1
 
