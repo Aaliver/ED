@@ -69,9 +69,20 @@ inserta e (AB r t1 Vacio) = AB r t1 (AB e Vacio Vacio)
 inserta e (AB r t1 t2) = AB r (inserta e t1) t2
 
 
+{- Función: frase
+   Descripción: Codifica una frase a bits con el árbol Huffman
+   de esa cadena
+   Uso: frase "olla" (arbol "olla") = "0111001"
+-}
+frase :: String -> Arbol Char -> String
+frase _ Vacio = error "No existe árbol para codificar"
+frase "" _ = ""
+frase (x:xs) tree = (bits x tree) ++ (frase xs tree)
+
+
 {- Función: bits
    Descripción: Convierte un caracter a bits 
-   Uso: bits 'a' (arbol (lista "olla")) = "001"
+   Uso: bits 'a' (arbol "olla") = "001"
 -}
 bits :: Char -> Arbol Char -> String
 bits _ Vacio = error "No existe árbol para convertir a bits"
@@ -92,7 +103,7 @@ raiz (AB r t1 t2) = r
 
 {- Función: letra
    Descripción: Convierte bits a un caracter
-   Uso: letra "001" (arbol (lista "olla")) = 'a'
+   Uso: letra "001" (arbol "olla") = 'a'
 -}
 letra :: String -> Arbol Char -> Char
 letra _ Vacio = error "No existe el caracter"
