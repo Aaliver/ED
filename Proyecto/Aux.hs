@@ -51,7 +51,7 @@ ordena (a, b) ((c, d):xs) =
 {- Función: construye
    Descripción: Construye un árbol los primeros elementos de
    una lista de tuplas
-   Uso: construye (AB '7' Vacio Vacio) [('2',9)] = AB '7' Vacio (AB '2' Vacio Vacio)
+   Uso: construye (AB '7' Vacio Vacio) [('z',9)] = AB '7' Vacio (AB 'z' Vacio Vacio)
 -}
 construye :: Arbol Char -> [(Char, Int)] -> Arbol Char
 construye tree [] = tree
@@ -61,7 +61,7 @@ construye tree ((a, b):xs) = construye (inserta a tree) xs
 {- Función: inserta
    Descripción: Inserta un alemento a un árbol en su rama
    derecha
-   Uso: inserta '7' Vacio = AB '0' (AB '0' Vacio Vacio) (AB '7' Vacio Vacio)
+   Uso: inserta '7' Vacio = AB ' ' (AB ' ' Vacio Vacio) (AB '7' Vacio Vacio)
 -}
 inserta :: Char -> Arbol Char -> Arbol Char
 inserta e Vacio = AB ' ' (AB ' ' Vacio Vacio) (AB e Vacio Vacio)
@@ -85,11 +85,23 @@ frase (x:xs) tree = (bits x tree) ++ (frase xs tree)
    Uso: bits 'a' (arbol "olla") = "001"
 -}
 bits :: Char -> Arbol Char -> String
-bits _ Vacio = error "No existe árbol para convertir a bits"
+bits _ Vacio = error "El caracter no existe en el árbol"
 bits e (AB r t1 t2) =
   if raiz t2 == e
   then "1"
   else '0':(bits e t1)
+
+
+{- Función: letra
+   Descripción: Convierte bits a un caracter
+   Uso: letra "001" (arbol "olla") = 'a'
+-}
+letra :: String -> Arbol Char -> Char
+letra _ Vacio = error "El caracter no existe en el árbol"
+letra (x:xs) (AB r t1 t2) =
+  if x == '1'
+  then raiz t2
+  else letra xs t1
 
 
 {- Función: raiz
@@ -99,27 +111,6 @@ bits e (AB r t1 t2) =
 raiz :: Arbol Char -> Char
 raiz Vacio = error "El elemento no existe"
 raiz (AB r t1 t2) = r
-
-
-{- Función: letra
-   Descripción: Convierte bits a un caracter
-   Uso: letra "001" (arbol "olla") = 'a'
--}
-letra :: String -> Arbol Char -> Char
-letra _ Vacio = error "No existe el caracter"
-letra ('1':_) (AB r _ t2) = raiz t2
-letra (x:xs) (AB r t1 t2) = letra xs t1
-
-
-{- Función: elemento
-   Descripción: Regresa el primer elemento que termina en 1 de
-   una cadena de bits
-   Uso: elemento "0111001" = "01"
--}
-elemento :: String -> String
-elemento "" = error "El elemento no es válido"
-elemento ('1':_) = "1"
-elemento (x:xs) = x:(elemento xs)
 
 
 {- Función: recorta

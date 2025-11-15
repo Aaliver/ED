@@ -1,9 +1,9 @@
-import Aux (Arbol(..), lista, listaOrd, construye, frase, letra, elemento, recorta)
+import Aux (Arbol(..), lista, listaOrd, construye, frase, letra, recorta)
 
 {- Función: arbol
-   Descripción: Crea un árbol Huffman de acuerdo a la frecuencia
-   de la frase dada
-   Uso: arbol "olla" = AB ' ' (AB '0' (AB '0' Vacio (AB 'a' Vacio Vacio)) (AB 'o' Vacio Vacio)) (AB 'l' Vacio Vacio)
+   Descripción: Crea un árbol Huffman de acuerdo a la
+   frecuencia de la frase dada
+   Uso: arbol "olla" = AB ' ' (AB ' ' (AB ' ' Vacio (AB 'a' Vacio Vacio)) (AB 'o' Vacio Vacio)) (AB 'l' Vacio Vacio)
 -}
 arbol :: String -> Arbol Char
 arbol [] = Vacio
@@ -27,4 +27,4 @@ encoding (x:xs) = frase (x:xs) (arbol (x:xs))
 decoding :: String -> Arbol Char -> String
 decoding _ Vacio = error "No existe árbol para decodificar"
 decoding "" _ = ""
-decoding (x:xs) tree = (letra (elemento (x:xs)) tree):(decoding (recorta (x:xs)) tree)
+decoding (x:xs) tree = (letra (x:xs) tree):(decoding (recorta (x:xs)) tree)
