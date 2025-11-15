@@ -1,6 +1,6 @@
 module Aux where
 
-data Arbol a = Vacio | AB a (Arbol a) (Arbol a) deriving (Eq, Ord, Show)
+data Arbol a = Vacio | AB a (Arbol a) (Arbol a) deriving (Show)
 
 {- Función: lista
    Descripción: Recibe una cadena de caracteres y regresa una
@@ -67,17 +67,6 @@ inserta :: Char -> Arbol Char -> Arbol Char
 inserta e Vacio = AB ' ' (AB ' ' Vacio Vacio) (AB e Vacio Vacio)
 inserta e (AB r t1 Vacio) = AB r t1 (AB e Vacio Vacio)
 inserta e (AB r t1 t2) = AB r (inserta e t1) t2
-
-
-{- Función: frase
-   Descripción: Codifica una frase a bits con el árbol Huffman
-   de esa cadena
-   Uso: frase "olla" (arbol "olla") = "0111001"
--}
-frase :: String -> Arbol Char -> String
-frase _ Vacio = error "No existe árbol para codificar"
-frase "" _ = ""
-frase (x:xs) tree = (bits x tree) ++ (frase xs tree)
 
 
 {- Función: bits
