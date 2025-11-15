@@ -10,32 +10,32 @@ arbol [] = Vacio
 arbol (x:xs) = construye (AB ' ' Vacio Vacio) (listaOrd (lista (x:xs)))
 
 
-{- Función: encoding
+{- Función: encode
    Descripción: Codifica una cadena a bits
-   Uso: encoding "olla" = "0111001"
+   Uso: encode "olla" = "0111001"
 -}
-encoding :: String -> String
-encoding "" = ""
-encoding (x:xs) = frase (x:xs) (arbol (x:xs))
+encode :: String -> String
+encode "" = ""
+encode (x:xs) = encodeWith (x:xs) (arbol (x:xs))
 
 
-{- Función: frase
-   Descripción: Codifica una frase a bits con el árbol Huffman
-   de esa cadena
-   Uso: frase "olla" (arbol "olla") = "0111001"
+{- Función: encodeWith
+   Descripción: Codifica una cadena a bits con el árbol
+   Huffman de esa cadena
+   Uso: encodeWith "olla" (arbol "olla") = "0111001"
 -}
-frase :: String -> Arbol Char -> String
-frase _ Vacio = error "No existe árbol para codificar"
-frase "" _ = ""
-frase (x:xs) tree = (bits x tree) ++ (frase xs tree)
+encodeWith :: String -> Arbol Char -> String
+encodeWith _ Vacio = error "No existe árbol para codificar"
+encodeWith "" _ = ""
+encodeWith (x:xs) tree = (bits x tree) ++ (encodeWith xs tree)
 
 
-{- Función: decoding
+{- Función: decode
    Descripción: Decodifica bits a una cadena con el árbol
    Huffman de esa cadena
-   Uso: decoding "0111001" (arbol "olla") = "olla"
+   Uso: decode "0111001" (arbol "olla") = "olla"
 -}
-decoding :: String -> Arbol Char -> String
-decoding _ Vacio = error "No existe árbol para decodificar"
-decoding "" _ = ""
-decoding (x:xs) tree = (letra (x:xs) tree):(decoding (recorta (x:xs)) tree)
+decode :: String -> Arbol Char -> String
+decode _ Vacio = error "No existe árbol para decodificar"
+decode "" _ = ""
+decode (x:xs) tree = (letra (x:xs) tree):(decode (recorta (x:xs)) tree)
