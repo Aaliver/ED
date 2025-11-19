@@ -1,4 +1,4 @@
-import Aux (Arbol(..), lista, listaOrd, construye, bits, letra, recorta)
+import Aux
 
 {- Función: arbol
    Descripción: Crea un árbol Huffman de acuerdo a la
@@ -7,7 +7,7 @@ import Aux (Arbol(..), lista, listaOrd, construye, bits, letra, recorta)
 -}
 arbol :: String -> Arbol Char
 arbol [] = Vacio
-arbol (x:xs) = construye (AB ' ' Vacio Vacio) (listaOrd (lista (x:xs)))
+arbol str = construye (AB ' ' Vacio Vacio) (listaOrd (lista str))
 
 
 {- Función: encode
@@ -16,7 +16,7 @@ arbol (x:xs) = construye (AB ' ' Vacio Vacio) (listaOrd (lista (x:xs)))
 -}
 encode :: String -> String
 encode "" = ""
-encode (x:xs) = encodeWith (x:xs) (arbol (x:xs))
+encode str = encodeWith str (arbol str)
 
 
 {- Función: encodeWith
@@ -38,4 +38,4 @@ encodeWith (x:xs) tree = (bits x tree) ++ (encodeWith xs tree)
 decode :: String -> Arbol Char -> String
 decode _ Vacio = error "No existe árbol para decodificar"
 decode "" _ = ""
-decode (x:xs) tree = (letra (x:xs) tree):(decode (recorta (x:xs)) tree)
+decode str tree = (letra str tree):(decode (recorta str) tree)

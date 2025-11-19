@@ -14,7 +14,7 @@ lista (x:xs) = (x, frecuencia x (x:xs)):(lista [y | y <- xs, y /= x])
 
 {- Función: frecuencia
    Descripción: Regresa la frecuencia con la que aparece un
-   caracter en una cadena
+   carácter en una cadena
    Uso: frecuencia 'a' "olla" = 1
 -}
 frecuencia :: Char -> String -> Int
@@ -59,7 +59,7 @@ construye tree ((a, b):xs) = construye (inserta a tree) xs
 
 
 {- Función: inserta
-   Descripción: Inserta un alemento a un árbol en su rama
+   Descripción: Inserta un elemento a un árbol en su rama
    derecha
    Uso: inserta '7' Vacio = AB ' ' (AB ' ' Vacio Vacio) (AB '7' Vacio Vacio)
 -}
@@ -70,11 +70,11 @@ inserta e (AB r t1 t2) = AB r (inserta e t1) t2
 
 
 {- Función: bits
-   Descripción: Convierte un caracter a bits 
+   Descripción: Convierte un carácter a bits 
    Uso: bits 'a' (arbol "olla") = "001"
 -}
 bits :: Char -> Arbol Char -> String
-bits _ Vacio = error "El caracter no existe en el árbol"
+bits _ Vacio = error "El carácter no existe en el árbol"
 bits e (AB r t1 t2) =
   if raiz t2 == e
   then "1"
@@ -82,11 +82,11 @@ bits e (AB r t1 t2) =
 
 
 {- Función: letra
-   Descripción: Convierte bits a un caracter
+   Descripción: Convierte bits a un carácter
    Uso: letra "001" (arbol "olla") = 'a'
 -}
 letra :: String -> Arbol Char -> Char
-letra _ Vacio = error "El caracter no existe en el árbol"
+letra _ Vacio = error "El carácter no existe en el árbol"
 letra (x:xs) (AB r t1 t2) =
   if x == '1'
   then raiz t2
