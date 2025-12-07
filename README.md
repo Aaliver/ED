@@ -1,3 +1,3 @@
-**Nombre Completo:** Becerril Acosta Valeria
+# Estructuras Discretas
 
-**Número de Cuenta:** 323128489
+**Nombre Completo:** Becerril Acosta Valeria
